@@ -22,9 +22,20 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	NeedyPeopleRepository needyPeople;
 	
 	@Override
-	public boolean login(Employee employee) throws NoSuchEmployeeException {
-
-		return false;
+	public Employee login(Employee employee) throws NoSuchEmployeeException {
+		Employee emp=empRepository.findById(employee.getEmployeeId()).orElse(null);
+		if(emp==null) {
+			String noSuchEmployee="No Donor found by the donor id"+employee.getEmployeeId();
+			throw new  NoSuchEmployeeException (noSuchEmployee);
+		}
+		else {
+			if(employee.getUsername().equals(emp.getUsername()) && employee.getPassword().equals(emp.getPassword())){
+				return emp;
+			}
+			else {
+				throw new NoSuchEmployeeException("Employee username and password are invalid");
+			}
+		}	
 	}
 
 	@Override
