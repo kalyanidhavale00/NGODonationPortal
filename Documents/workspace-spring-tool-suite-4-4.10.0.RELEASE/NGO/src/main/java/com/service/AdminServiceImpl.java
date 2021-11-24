@@ -2,17 +2,28 @@ package com.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.exception.DuplicateEmployeeException;
 import com.exception.NoSuchEmployeeException;
 import com.model.DonationDistribution;
 import com.model.Employee;
+import com.repository.AdminRepository;
 
+@Service
 public class AdminServiceImpl implements IAdminService {
 
+	@Autowired
+	AdminRepository adminRepository;
+	
+	Employee emp;
+	
 	@Override
-	public boolean addEmployee(Employee employee) throws DuplicateEmployeeException {
-		// TODO Auto-generated method stub
-		return false;
+	public Employee addEmployee(Employee employee) throws DuplicateEmployeeException {
+		int id=employee.getEmployeeId();
+		
+		return null;
 	}
 
 	@Override

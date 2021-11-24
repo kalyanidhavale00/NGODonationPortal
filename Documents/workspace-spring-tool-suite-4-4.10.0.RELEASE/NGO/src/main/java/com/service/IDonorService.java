@@ -6,7 +6,7 @@ import com.model.Donation;
 import com.model.Donor;
 
 public interface IDonorService {
-	public boolean registerDonor(Donor donor) throws DuplicateDonorException;
+	public Donor registerDonor(Donor donor) throws DuplicateDonorException;
 	public Donor login(Donor donor) throws NoSuchDonorException;
 	public Donation donateToNGO(Donation donation);
 	public String sendThankyouMailToDonator(Donor donor);

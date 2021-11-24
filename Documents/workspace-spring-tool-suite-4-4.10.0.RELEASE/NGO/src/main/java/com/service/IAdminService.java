@@ -8,7 +8,7 @@ import com.model.DonationDistribution;
 import com.model.Employee;
 
 public interface IAdminService {
-	public boolean addEmployee(Employee employee) throws DuplicateEmployeeException;
+	public Employee addEmployee(Employee employee) throws DuplicateEmployeeException;
 	public Employee modifyEmployee(Employee employee) throws NoSuchEmployeeException;
 	public boolean removeEmployee(int employeeId) throws NoSuchEmployeeException;
 	public Employee findEmployeeById(int employeeId) throws NoSuchEmployeeException;

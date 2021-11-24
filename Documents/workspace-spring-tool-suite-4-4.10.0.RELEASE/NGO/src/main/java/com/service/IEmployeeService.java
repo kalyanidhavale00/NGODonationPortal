@@ -9,7 +9,7 @@ import com.model.NeedyPeople;
 
 public interface IEmployeeService {
 	public boolean login(Employee employee)throws NoSuchEmployeeException;
-	public boolean addNeedyPerson(NeedyPeople person);
+	public NeedyPeople addNeedyPerson(NeedyPeople person);
 	public boolean removeNeedyPerson(NeedyPeople person);
 	public NeedyPeople findNeedyPeopleById(int id);
 	public List<NeedyPeople> findNeedyPeopleByName(String name);

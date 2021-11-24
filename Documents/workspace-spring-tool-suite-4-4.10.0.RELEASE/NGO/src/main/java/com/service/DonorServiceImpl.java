@@ -20,8 +20,13 @@ public class DonorServiceImpl implements IDonorService {
 	DonationRepository donationRepository;
 	
 	@Override
-	public boolean registerDonor(Donor donor) throws DuplicateDonorException {
-		return false;
+	public Donor registerDonor(Donor donor) throws DuplicateDonorException {
+		if(checkIfUserExist(donor.getDonorId())) {
+			throw new DuplicateDonorException ("user is already exists for this email");
+		}
+		else {
+			return donorRepository.save(donor);
+		}	
 	}
 
 	@Override
@@ -54,7 +59,6 @@ public class DonorServiceImpl implements IDonorService {
 
 	@Override
 	public String forgotPassword(String username) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -68,6 +72,10 @@ public class DonorServiceImpl implements IDonorService {
 	public String emailPasswordToDonor(String email) {
 		return"click here for reset the password.....";
 
+	}
+	public boolean checkIfUserExist(int donorId ) {
+		return donorRepository.findById(donorId)!= null ? true : false;
+		
 	}
 
 }
