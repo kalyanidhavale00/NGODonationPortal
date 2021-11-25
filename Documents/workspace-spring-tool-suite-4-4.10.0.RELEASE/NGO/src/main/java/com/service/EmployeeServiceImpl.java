@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exception.NoSuchEmployeeException;
+
 import com.model.DonationDistribution;
 import com.model.Employee;
 import com.model.NeedyPeople;
@@ -56,19 +57,26 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return n;
 	}
 
-	@Override
-	public List<NeedyPeople> findNeedyPeopleByName(String name) {
-		
-		return null;
-	}
+	/*@Override
+	public List<NeedyPeople>findNeedyPeopleByName(String name) {
+		List<NeedyPeople>p=needyPeople.findNeedyPeopleByName(name);
+		return  p;
+	}*/
 
 	@Override
 	public List<NeedyPeople> findAllNeedyPeople() {
-		return needyPeople.findAll();
+		List<NeedyPeople> ln=needyPeople.findAll();
+		return ln;
 	}
 
 	@Override
 	public String helpNeedyPerson(DonationDistribution distribute) {
+		return null;
+	}
+
+	@Override
+	public List<NeedyPeople> findNeedyPeopleByName(String name) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

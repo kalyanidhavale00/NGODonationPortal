@@ -32,6 +32,14 @@ public class Donor {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
+	public Donor() {}
+	
+	public Donor(String donorUsername, String donorPassword) {
+		super();
+		this.donorUsername = donorUsername;
+		this.donorPassword = donorPassword;
+	}
+	
 	public int getDonorId() {
 		return donorId;
 	}
@@ -56,6 +64,7 @@ public class Donor {
 	public void setDonorPhone(String donorPhone) {
 		this.donorPhone = donorPhone;
 	}
+
 	public String getDonorUsername() {
 		return donorUsername;
 	}
@@ -87,62 +96,7 @@ public class Donor {
 				+ address + "]";
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((donorEmail == null) ? 0 : donorEmail.hashCode());
-		result = prime * result + donorId;
-		result = prime * result + ((donorName == null) ? 0 : donorName.hashCode());
-		result = prime * result + ((donorPassword == null) ? 0 : donorPassword.hashCode());
-		result = prime * result + ((donorPhone == null) ? 0 : donorPhone.hashCode());
-		result = prime * result + ((donorUsername == null) ? 0 : donorUsername.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Donor other = (Donor) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (donorEmail == null) {
-			if (other.donorEmail != null)
-				return false;
-		} else if (!donorEmail.equals(other.donorEmail))
-			return false;
-		if (donorId != other.donorId)
-			return false;
-		if (donorName == null) {
-			if (other.donorName != null)
-				return false;
-		} else if (!donorName.equals(other.donorName))
-			return false;
-		if (donorPassword == null) {
-			if (other.donorPassword != null)
-				return false;
-		} else if (!donorPassword.equals(other.donorPassword))
-			return false;
-		if (donorPhone == null) {
-			if (other.donorPhone != null)
-				return false;
-		} else if (!donorPhone.equals(other.donorPhone))
-			return false;
-		if (donorUsername == null) {
-			if (other.donorUsername != null)
-				return false;
-		} else if (!donorUsername.equals(other.donorUsername))
-			return false;
-		return true;
-	}
+
 	
 
 }

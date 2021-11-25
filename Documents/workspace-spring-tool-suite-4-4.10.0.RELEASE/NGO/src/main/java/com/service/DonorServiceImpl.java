@@ -21,13 +21,15 @@ public class DonorServiceImpl implements IDonorService {
 	
 	@Override
 	public Donor registerDonor(Donor donor) throws DuplicateDonorException {
-		if(checkIfUserExist(donor.getDonorId())) {
-			throw new DuplicateDonorException ("user is already exists for this email");
-		}
-		else {
+		String email= donorRepository.checkIfUserAlreadyExists(donor.getDonorEmail());
+		if(email == donor.getDonorEmail()){
+	            throw new DuplicateDonorException("User already exists for this email");
+	        }
+		else
+		{
 			return donorRepository.save(donor);
-		}	
-	}
+		}
+	    }
 
 	@Override
 	public Donor login(Donor donor) throws NoSuchDonorException {
@@ -73,9 +75,6 @@ public class DonorServiceImpl implements IDonorService {
 		return"click here for reset the password.....";
 
 	}
-	public boolean checkIfUserExist(int donorId ) {
-		return donorRepository.findById(donorId)!= null ? true : false;
-		
-	}
+
 
 }
