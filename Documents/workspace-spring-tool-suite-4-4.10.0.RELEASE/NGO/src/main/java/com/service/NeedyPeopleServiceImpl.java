@@ -15,9 +15,16 @@ public class NeedyPeopleServiceImpl implements INeedyPeopleService {
 	@Autowired 
 	NeedyPeopleRepository needyPeopleRepository;
 	@Override
-	public boolean registerNeedyPerson(NeedyPeople person) {
-		// TODO Auto-generated method stub
-		return false;
+	public NeedyPeople registerNeedyPerson(NeedyPeople person) throws NoSuchNeedyPeopleException
+	{
+		NeedyPeople rn= needyPeopleRepository.findById(person.getNeedyPersonId()).orElse(null);
+		if (rn != null)
+			throw new NoSuchNeedyPeopleException("no such needyPeople ");
+		else 
+			rn = needyPeopleRepository.save(person);
+		return rn;
+		
+		
 	}
 
 	@Override

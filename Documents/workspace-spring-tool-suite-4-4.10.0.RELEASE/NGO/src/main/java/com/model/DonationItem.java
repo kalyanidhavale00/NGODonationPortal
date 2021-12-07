@@ -17,35 +17,45 @@ import javax.persistence.Table;
 
 @Entity
 public class DonationItem {
+	// fields
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int itemId;
 	private String itemDescription;
-	
+
 	@Enumerated(EnumType.STRING)
 	private DonationType item;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	// one to one mapping unidireactional
+	@OneToOne(cascade = CascadeType.ALL)
 	private Donation donation;
-	
+
+	// getters and setters
 	public int getItemId() {
 		return itemId;
 	}
+
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
+
 	public DonationType getItem() {
 		return item;
 	}
+
 	public void setItem(DonationType item) {
 		this.item = item;
 	}
+
 	public String getItemDescription() {
 		return itemDescription;
 	}
+
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
+
+	// to string
 	@Override
 	public String toString() {
 		return "DonationItem [itemId=" + itemId + ", itemDescription=" + itemDescription + ", item=" + item

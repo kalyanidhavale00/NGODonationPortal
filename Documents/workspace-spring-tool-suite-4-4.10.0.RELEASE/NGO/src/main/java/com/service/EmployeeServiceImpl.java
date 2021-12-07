@@ -57,12 +57,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return n;
 	}
 
-	/*@Override
-	public List<NeedyPeople>findNeedyPeopleByName(String name) {
-		List<NeedyPeople>p=needyPeople.findNeedyPeopleByName(name);
-		return  p;
-	}*/
-
 	@Override
 	public List<NeedyPeople> findAllNeedyPeople() {
 		List<NeedyPeople> ln=needyPeople.findAll();
@@ -75,9 +69,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	}
 
 	@Override
-	public List<NeedyPeople> findNeedyPeopleByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public NeedyPeople findNeedyPeopleByName(String name) {
+		NeedyPeople n=needyPeople.findByNeedyPersonName(name);
+		return n;
 	}
 
 }

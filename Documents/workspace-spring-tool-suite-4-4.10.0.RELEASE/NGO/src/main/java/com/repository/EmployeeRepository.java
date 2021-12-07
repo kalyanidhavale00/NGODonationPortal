@@ -6,4 +6,6 @@ import com.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
+	Employee findByEmployeeName(String name);
+
 }

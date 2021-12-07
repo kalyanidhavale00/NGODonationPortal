@@ -12,22 +12,37 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Employee {
+	// feilds
 	@Id
 	@GeneratedValue
 	private int employeeId;
+	@NotNull
+	@Size(min = 3, message = "First Name should have atleast 3 characters")
 	private String employeeName;
+	@NotNull
+	@Email
 	private String email;
+	@NotEmpty
 	private String phone;
+	@NotEmpty
 	private String username;
+	@NotNull
+	@Size(min = 8, message = "password should have atleast 8 characters")
 	private String password;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="address_id")
+
+	// one to one
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
+
+	// getters and setters
 	public int getEmployeeId() {
 		return employeeId;
 	}

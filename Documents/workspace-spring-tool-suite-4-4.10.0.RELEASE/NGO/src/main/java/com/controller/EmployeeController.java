@@ -46,12 +46,10 @@ public class EmployeeController {
 		return new ResponseEntity<NeedyPeople>(p, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getNeedyPeopleName/{name}")
-	public ResponseEntity<NeedyPeople> findNeedyPeopleByName(@PathVariable String cname) 
-	{
-		List<NeedyPeople> n=empService.findNeedyPeopleByName(cname);
-		ResponseEntity re=new ResponseEntity<List<NeedyPeople>>(n,HttpStatus.OK);
-		return re;
+	@GetMapping(path = "/needyPeople/getByName/{name}")
+	public ResponseEntity<NeedyPeople> findNeedyPeopleByName(@PathVariable("name") String name) {
+		NeedyPeople n = empService.findNeedyPeopleByName(name);
+		return new ResponseEntity<NeedyPeople>(n, HttpStatus.OK);
 	}
 	
 	@GetMapping(path="/getAllNeedyPeople")
